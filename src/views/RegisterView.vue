@@ -2,7 +2,7 @@
 <div>
     <div class="error" v-if="error">{{error.message}}</div>
     <form @submit.prevent="pressed">
-      Register
+      <h3>Register</h3>
       <div class="email">
         <input type="email" v-model="email" placeholder="email" />
       </div>
@@ -32,7 +32,6 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          console.log("here");
           this.$router.replace({ name: "secret" });
         })
         .catch(error => (this.error = error));

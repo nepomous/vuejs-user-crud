@@ -1,18 +1,36 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>Welcome home</h3>
+    <!-- <h5 class="user" >{{userData}}</h5> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      userData: ""
+    };
+  },
+  mounted() {
+    this.getUserData();
+  },
+  methods: {
+    async getUserData() {
+      const email = await firebase.auth().currentUser.email;
+      console.log('tem email?', email)
+      this.userData = email;
+    }
   }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+div {
+  color: inherit;
+}
+</style>
