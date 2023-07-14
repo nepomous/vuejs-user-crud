@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import EditView from "../views/EditView.vue";
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -24,6 +25,11 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
+  },
+  {
+    path: "/edit/:id",
+    name: "Edit",
+    component: EditView,
   },
   {
     path: "/about",

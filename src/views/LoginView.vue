@@ -3,16 +3,28 @@
     <h3>Login</h3>
     <form @submit.prevent="pressed">
       <div class="login">
-        <input type="text" placeholder="login" v-model="email" />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="login"
+          v-model="email"
+        />
       </div>
       <div class="password">
-        <input type="password" placeholder="password" v-model="password" />
+        <input
+          class="form-control"
+          type="password"
+          placeholder="password"
+          v-model="password"
+        />
       </div>
-      <button>Login</button>
+      <button class="btn btn-success m-5">Login</button>
     </form>
     <div>
-      <h3>Don't have account?</h3>
-      <button class="but" @click="goToRegister">Please Register</button>
+      <h5>Don't have account?</h5>
+      <button class="btn btn-primary btn-sm me-2" @click="goToRegister">
+        Please Register
+      </button>
     </div>
     <div class="error" v-if="error">{{ error.message }}</div>
   </div>
@@ -54,16 +66,8 @@ div {
   color: inherit;
 }
 input {
-  width: 400px;
-  padding: 30px;
-  margin: 20px;
+  margin-top: 20px;
   font-size: 21px;
-}
-
-button {
-  width: 400px;
-  height: 75px;
-  font-size: 100%;
 }
 
 .error {

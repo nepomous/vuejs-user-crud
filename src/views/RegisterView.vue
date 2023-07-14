@@ -4,12 +4,22 @@
     <form @submit.prevent="pressed">
       <h3>Register</h3>
       <div class="email">
-        <input type="email" v-model="email" placeholder="email" />
+        <input
+          class="form-control"
+          type="email"
+          v-model="email"
+          placeholder="email"
+        />
       </div>
       <div class="password">
-        <input type="password" v-model="password" placeholder="password" />
+        <input
+          class="form-control"
+          type="password"
+          v-model="password"
+          placeholder="password"
+        />
       </div>
-      <button type="submit">Register</button>
+      <button class="btn btn-primary m-3" type="submit">Register</button>
     </form>
   </div>
 </template>
@@ -46,15 +56,7 @@ export default {
   font-size: 18px;
 }
 input {
-  width: 400px;
-  padding: 30px;
-  margin: 20px;
+  margin-top: 20px;
   font-size: 21px;
-}
-
-button {
-  width: 400px;
-  height: 75px;
-  font-size: 100%;
 }
 </style>
