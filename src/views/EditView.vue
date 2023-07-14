@@ -4,7 +4,11 @@
     <form @submit.prevent="update">
       <div class="form-group">
         <label>Name</label>
-        <input v-model="form.name" class="form-control" required />
+        <input
+          v-model="form.name"
+          class="form-control"
+          required
+        >
       </div>
 
       <div class="form-group mt-3">
@@ -14,25 +18,30 @@
           class="form-control"
           type="email"
           required
-        />
+        >
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3">Update</button>
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+      >
+        Update
+      </button>
     </form>
   </div>
 </template>
 
 <script>
-import { getUser, updateUser } from "../main";
+import { getUser, updateUser } from '../main';
 
 export default {
   data() {
     return {
       userId: this.$route.params.id,
       form: {
-        name: "",
-        email: "",
-      },
+        name: '',
+        email: ''
+      }
     };
   },
 
@@ -47,10 +56,10 @@ export default {
     },
     async update() {
       await updateUser(this.userId, { ...this.form });
-      this.$router.push("/");
-      this.form.name = "";
-      this.form.email = "";
-    },
-  },
+      this.$router.push('/');
+      this.form.name = '';
+      this.form.email = '';
+    }
+  }
 };
 </script>

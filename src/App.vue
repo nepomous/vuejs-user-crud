@@ -1,26 +1,38 @@
 <template>
   <div id="app">
-    <top-header></top-header>
+    <top-header />
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link v-if="notLoggedIn" to="/login"> | Login | </router-link>
-      <router-link v-if="notLoggedIn" to="/register">Register User</router-link>
+      <router-link to="/">
+        Home
+      </router-link>
+      <router-link
+        v-if="notLoggedIn"
+        to="/login"
+      >
+        | Login |
+      </router-link>
+      <router-link
+        v-if="notLoggedIn"
+        to="/register"
+      >
+        Register User
+      </router-link>
     </nav>
     <router-view />
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
-import Header from "./components/Top-Header";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import Header from './components/Top-Header';
 export default {
   components: {
-    "top-header": Header,
+    'top-header': Header
   },
   data() {
     return {
-      notLoggedIn: true,
+      notLoggedIn: true
     };
   },
   mounted() {
@@ -35,8 +47,8 @@ export default {
           this.notLoggedIn = true;
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

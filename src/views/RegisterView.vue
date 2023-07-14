@@ -1,39 +1,49 @@
 <template>
   <div>
-    <div class="error" v-if="error">{{ error.message }}</div>
+    <div
+      v-if="error"
+      class="error"
+    >
+      {{ error.message }}
+    </div>
     <form @submit.prevent="pressed">
       <h3>Register</h3>
       <div class="email">
         <input
+          v-model="email"
           class="form-control"
           type="email"
-          v-model="email"
           placeholder="email"
-        />
+        >
       </div>
       <div class="password">
         <input
+          v-model="password"
           class="form-control"
           type="password"
-          v-model="password"
           placeholder="password"
-        />
+        >
       </div>
-      <button class="btn btn-primary m-3" type="submit">Register</button>
+      <button
+        class="btn btn-primary m-3"
+        type="submit"
+      >
+        Register
+      </button>
     </form>
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 export default {
   data() {
     return {
-      email: "",
-      password: "",
-      error: "",
+      email: '',
+      password: '',
+      error: ''
     };
   },
   methods: {
@@ -42,11 +52,11 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace({ name: "home" });
+          this.$router.replace({ name: 'home' });
         })
         .catch((error) => (this.error = error));
-    },
-  },
+    }
+  }
 };
 </script>
 

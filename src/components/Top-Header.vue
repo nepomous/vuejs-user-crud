@@ -1,14 +1,25 @@
 <template>
   <div>
-    <button v-if="loggedIn" class="but" @click="signOut">Sign out</button>
+    <button
+      v-if="loggedIn"
+      class="but"
+      @click="signOut"
+    >
+      Sign out
+    </button>
   </div>
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 export default {
-  name: "top-header",
+  name: 'TopHeader',
+  data() {
+    return {
+      loggedIn: false
+    };
+  },
   mounted() {
     this.setupFirebase();
   },
@@ -27,15 +38,10 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({ name: "login" });
+          this.$router.replace({ name: 'login' });
         });
-    },
-  },
-  data() {
-    return {
-      loggedIn: false,
-    };
-  },
+    }
+  }
 };
 </script>
 
