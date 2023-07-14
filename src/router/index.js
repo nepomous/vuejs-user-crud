@@ -4,7 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 Vue.use(VueRouter);
@@ -19,7 +19,6 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-    meta: { requiresAuth: true },
   },
   {
     path: "/register",

@@ -1,31 +1,46 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h3>Welcome home</h3>
-    <!-- <h5 class="user" >{{userData}}</h5> -->
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <div v-if="loggedIn">
+      <h3>Welcome home</h3>
+      <h3 class="user">{{ userData }}</h3>
+    </div>
+    <div v-else>
+      <h3>Please Log in</h3>
+    </div>
   </div>
 </template>
 
 <script>
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
   data() {
     return {
-      userData: ""
+      loggedIn: false,
+      userData: "",
     };
   },
   mounted() {
+    this.setupFirebase();
     this.getUserData();
   },
   methods: {
     async getUserData() {
       const email = await firebase.auth().currentUser.email;
-      console.log('tem email?', email)
       this.userData = email;
-    }
-  }
+    },
+    setupFirebase() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.loggedIn = true;
+        } else {
+          this.loggedIn = false;
+        }
+      });
+    },
+  },
 };
 </script>
 

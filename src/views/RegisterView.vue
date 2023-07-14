@@ -1,6 +1,6 @@
 <template>
-<div>
-    <div class="error" v-if="error">{{error.message}}</div>
+  <div>
+    <div class="error" v-if="error">{{ error.message }}</div>
     <form @submit.prevent="pressed">
       <h3>Register</h3>
       <div class="email">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
@@ -23,7 +23,7 @@ export default {
     return {
       email: "",
       password: "",
-      error: ""
+      error: "",
     };
   },
   methods: {
@@ -32,11 +32,11 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace({ name: "secret" });
+          this.$router.replace({ name: "home" });
         })
-        .catch(error => (this.error = error));
-    }
-  }
+        .catch((error) => (this.error = error));
+    },
+  },
 };
 </script>
 
